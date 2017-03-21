@@ -1,47 +1,68 @@
-<?php 
-	
-	$fator1 = $_POST['numero1'];
-	$fator2 = $_POST['numero2'];
-
-/*	for ($fator1 = $_POST['numero1']; $fator1 <= $fator2; $fator1++){
-	
-		echo $fator1 . "x" . $fator2 . "=" . $fator1 * $fator2 . "<br>";
-	}
-*/
-	for ($fator1 = $_POST['numero1']; $fator1 <= $fator2; $fator1++){
-	
-
-		" 	Tabuada de '$fator1'
-				<table>
-					<thead>
-						<th>Fórmula</th>
-						<th>Valor</th>
-					</thead>
-				</table>";
-	}
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
 	<meta charset="utf-8">
 	<title>Tabuadas</title>
 	<style type="text/css">
-		table th {
-			border:1px black solid;
+
+		table, th, td{
+			border-collapse: collapse;
+			border: 1px solid black;
+			text-align: center;
 		}
+
+		th {
+			background-color: DarkRed ;
+			color: white;
+			font-weight: bolder;
+		}
+
+		div{
+			text-align: center;
+			display: inline-block;
+			margin:0 20px 20px 0;
+		}
+
 	</style>
 </head>
 
 <body>
-	<p></p>
-	<table>
-		<thead>
-			<th>Fórmula</th>
-			<th>Valor</th>
-		</thead>
-	</table>
+
+	<?php 
+		$tabInicio = $_POST['tabInicio'];
+		$tabFinal = $_POST['tabFinal'];
+
+		$numInicio = $_POST['numInicio'];
+		$numFinal = $_POST['numFinal'];
+
+		for ($i=$tabInicio; $i <= $tabFinal ; $i++) {
+
+			print "
+				<div class = 'container'> 
+					Tabuada do " . $i . "<br>
+					<table>
+						<thead>
+							<tr>
+								<th>Fórmula</th>
+								<th>Valor</th>
+							</tr>
+						</thead>
+						<tbody>"; 
+
+				for ($j=$numInicio ; $j <= $numFinal; $j++){
+					print "
+						<tr>
+							<td>" . $i . " x " . $j . "</td>
+							<td>" . ($i*$j) . "</td>		
+						</tr>";				
+				}
+				print "
+					</tbody>
+					</table> 
+				</div>";
+		}
+	?>
+
 </body>
 </html>
 
